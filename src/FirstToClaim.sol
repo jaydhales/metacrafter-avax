@@ -1,9 +1,5 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.13;
-
-// Contract successfully uses require()
-// Contract successfully uses assert()
-// Contract successfully uses revert() statements
+pragma solidity ^0.8.20;
 
 contract FirstToClaim {
     bool hasClaimedOwnership;
