@@ -1,72 +1,28 @@
-## Foundry
-
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
-
-Foundry consists of:
-
-- **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
-- **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
-- **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
-- **Chisel**: Fast, utilitarian, and verbose solidity REPL.
-
-## Documentation
-
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
-```shell
-$ forge build
-```
-
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
-
-# Contract Name
+# FirstToClaim Contract
 
 ## Contract Overview
 
+The FirstToClaim is a simple game where every player competes to claim ownership and stops others from becoming owner. It includes functionalities for transferring ownership and admin functionality to reset the game.
+
+All Error Handlings were successfully implemented.
+
 ## Contract Details
+
+### State Variables
+
+`hasClaimedOwnership`: A boolean variable that indicates whether ownership has been claimed.
+
+- `owner`: The address of the current owner.
+- `admin`: The address of the contract administrator.
+
+### claimOwnership
+
+This function allows a player to claim ownership provided that somebody else has not interacted before. This condition is fulfilled by the `require` statement in the function. If `hasClaimedOwnership` is already true, the function will fail.
+
+### transferOwnership
+
+This function allows the owner to transfer his ownership to another address. The error check in this function will revert if the address interacting with this function is not the owner.
+
+### reset
+
+This function allows the admin to restart the game by resetting all state variable to their default states. The function assert that its caller is the admin before running.
