@@ -1,43 +1,43 @@
-# Project Title
+# Degen Smart Contract
 
-// 0x38dA2b7dcD6170f2DBe25851E695bcB2DF1Bfe09
-https://testnet.snowtrace.io/address/0x38dA2b7dcD6170f2DBe25851E695bcB2DF1Bfe09#code
-Simple overview of use/purpose.
+## Overview
 
-## Description
+`Degen` is an ERC-20 token where user can redeem items by burning the actual amount the item is worth. These items can only created by the owner of the contract. The contract is built on Open Zeppelin ERC20 standards.
 
-An in-depth paragraph about your project and overview of use.
+The contract is deployed on Avalanche Fuji Testnet at the following address:
+[0x38dA2b7dcD6170f2DBe25851E695bcB2DF1Bfe09](https://testnet.snowtrace.io/address/0x38dA2b7dcD6170f2DBe25851E695bcB2DF1Bfe09#code)
 
-## Getting Started
+## Contract Details
 
-### Installing
+### mint
 
-- How/where to download your program
-- Any modifications needed to be made to files/folders
+- Mints new tokens to a specified address.
+- Only the contract owner can call this function (based on onlyOwner Modifier).
 
-### Executing program
+### burn
 
-- How to run the program
-- Step-by-step bullets
+- Remove a specified amount from the caller's balance and total supply.
+- Caller must have a sufficient balance to burn.
 
-```
-code blocks for commands
-```
+### transfer
 
-## Help
+- Allows holders of the token to transfer an amount of the token to another address.
+- Provided that their balance is greater than that amount.
 
-Any advise for common problems or issues.
+### createItem
 
-```
-command to run if program contains helper info
-```
+- Allows owner to create a new item for users to redeem.
+- These items can be accessed with their unique id.
 
-## Authors
+### redeem
 
-Contributors names and contact info
+- Allow users to redeem items by burning an amount required to redeem it.
+- User can only only redeem items that has not been redeemed before.
 
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
+### getFreeItems
+
+- Returns the indexes of all free items as an array for the caller.
+- An item is considered free if the registered owner is the contract.
 
 ## License
 
