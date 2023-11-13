@@ -1,7 +1,7 @@
 require("@nomicfoundation/hardhat-toolbox");
-require('dotenv').config();
+require("dotenv").config();
 
-const FORK_FUJI = false;
+const FORK_FUJI = true;
 const FORK_MAINNET = false;
 let forkingData = undefined;
 
@@ -12,7 +12,7 @@ if (FORK_MAINNET) {
 }
 if (FORK_FUJI) {
   forkingData = {
-    url: "https://api.avax-test.network/ext/bc/C/rpc",
+    url: "https://avalanche-fuji-c-chain.publicnode.com",
   };
 }
 
@@ -20,14 +20,8 @@ if (FORK_FUJI) {
 module.exports = {
   solidity: "0.8.18",
   networks: {
-    hardhat: {
-      gasPrice: 225000000000,
-      chainId: !forkingData ? 43112 : undefined, //Only specify a chainId if we are not forking
-      forking: forkingData,
-    },
     fuji: {
-      url: "https://api.avax-test.network/ext/bc/C/rpc",
-      gasPrice: 225000000000,
+      url: "https://avalanche-fuji-c-chain.publicnode.com",
       chainId: 43113,
       accounts: [process.env.WALLET_PRIVATE_KEY], // we use a .env file to hide our wallets private key
     },
